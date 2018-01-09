@@ -58,31 +58,41 @@ def copyToClipboard(inputString):
     r.destroy()
     return
 
-    
-
-#---------------------Main Process---------------------
-
+#startScript()
+#this begins the script
 #Intro to user and ask for string
 #ask for string
-print(userInputPromptString)
-inputString = input()
+def startScript():
+    print(userInputPromptString)
+    inputString = input()
 
 #parse string for &nbsp; and replace with a space
-HTMLNBSpaceTuple = HTMLNBSpaceReplace(inputString)
-altString1 = HTMLNBSpaceTuple[1]
-HTMLNBSpaceCount = HTMLNBSpaceTuple[0]
+    HTMLNBSpaceTuple = HTMLNBSpaceReplace(inputString)
+    altString1 = HTMLNBSpaceTuple[1]
+    HTMLNBSpaceCount = HTMLNBSpaceTuple[0]
 
 
 #parse new version of string for double space
-doubleSpaceTuple = doubleSpaceReplace(altString1)
-altString2 = doubleSpaceTuple[1]
-doubleSpaceCount = doubleSpaceTuple[0]
+    doubleSpaceTuple = doubleSpaceReplace(altString1)
+    altString2 = doubleSpaceTuple[1]
+    doubleSpaceCount = doubleSpaceTuple[0]
 
 
 #copy final string into clipboard
-copyToClipboard(altString2)
-print("There were " + str(HTMLNBSpaceCount) + " &nbsp; in the original string.")
-print("There were " + str(doubleSpaceCount) + " double spaces in the original string.")
-print("The result is now in your clipboard. You can now paste it.")
+    copyToClipboard(altString2)
+    print("There were " + str(HTMLNBSpaceCount) + " &nbsp; in the original string.")
+    print("There were " + str(doubleSpaceCount) + " double spaces in the original string.")
+    print("The result is now in your clipboard. You can now paste it.")
+    startScript()
+
+
+#restartScript()
+#this restarts the script and allows the window to stay open
+
+    
+
+#---------------------Main Process---------------------
+startScript()
+
 
 
