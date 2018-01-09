@@ -65,6 +65,8 @@ def copyToClipboard(inputString):
 def startScript():
     print(userInputPromptString)
     inputString = input()
+    if inputString == "exit":
+        return
 
 #parse string for &nbsp; and replace with a space
     HTMLNBSpaceTuple = HTMLNBSpaceReplace(inputString)
@@ -80,11 +82,20 @@ def startScript():
 
 #copy final string into clipboard
     copyToClipboard(altString2)
+    print(altString2)
     print("There were " + str(HTMLNBSpaceCount) + " &nbsp; in the original string.")
     print("There were " + str(doubleSpaceCount) + " double spaces in the original string.")
     print("The result is now in your clipboard. You can now paste it.")
-    startScript()
-
+    print("Would you like to continue? (y/n) ")
+    answer = input()
+    if answer == "y":
+        return startScript()
+    elif answer =="n":
+        return
+    else:
+        print("Invalid response. Would you like to continue? (y/n)")
+        answer = input()
+        
 
 #restartScript()
 #this restarts the script and allows the window to stay open
@@ -93,6 +104,3 @@ def startScript():
 
 #---------------------Main Process---------------------
 startScript()
-
-
-
